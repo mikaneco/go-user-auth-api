@@ -1,0 +1,11 @@
+@host = localhost:8080
+
+// Access a Secured API Endpoint
+PUT  http://{{host}}/api/v1/user HTTP/1.1
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pY2hpaGl0b0Bnby5jb20iLCJleHAiOjE2Nzc5NDU4Mjh9.5ewhUu_d0eTqD4wESfoAcZAPgmBdMJCg9_Fqjy1yLwc
+
+{
+  "name": "Bob"
+}
+###
