@@ -8,6 +8,7 @@ import (
 	"goapi/service"
 	"log"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,8 +30,15 @@ func router() *gin.Engine {
 	authController := controller.NewAuthController(userService)
 	userController := controller.NewUserController(userService)
 
-	// ルーティング
 	r := gin.Default()
+
+	// CORSミドルウェアの設定
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
+	r.Use(cors.New(config))
+
+	// ルーティング
 	api := r.Group("/api")
 	{
 		v1 := api.Group("/v1")
